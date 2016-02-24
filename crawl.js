@@ -106,7 +106,7 @@ crawler.on("complete", function(){
 
 // FUNCTIONS
 function print_line(prefix, line){
-    var pefix = typeof prefix !== 'undefined' ? prefix : '';
+    var prefix = typeof prefix !== 'undefined' ? prefix : '';
     var line = typeof line !== 'undefined' ? line : '';
     if(!options['silent']){
         console.log(prefix + line);

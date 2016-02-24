@@ -1,0 +1,25 @@
+{
+  "name": "crawl",
+  "version": "1.0.0",
+  "description": "Crawl Websites",
+  "main": "crawl.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin":{
+    "crawl":"crawl.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://jgile@bitbucket.org/jgile/node-website-crawler.git"
+  },
+  "keywords": [
+    "node",
+    "crawler",
+    "crawl",
+    "scan"
+  ],
+  "author": "John Gile",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/jgile/node-website-crawler#readme"
+}

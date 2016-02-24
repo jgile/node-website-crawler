@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 /*
     node crawl.js -target __TARGETDOMAIN__
     -target *required
@@ -61,7 +62,7 @@ if(process.argv.indexOf("-rd") != -1){
 var stripped_url = options['full_url'].replace(/\W/g, ''),
 	fs = require('fs'),
 	csvWriter = require('csv-write-stream'),
-	Crawler = require("simplecrawler"),	
+	Crawler = require("simplecrawler"),
 	crawler = Crawler.crawl(options['full_url']);
 
 	crawler.filterByDomain = options['restrict_domain'],
@@ -75,13 +76,13 @@ var writer_all = csvWriter({ headers: ["url", "response_code", "status", "respon
 	writer_all.pipe(fs.createWriteStream(stripped_url+'.csv'));
 
 // REDIRECTED
-crawler.on("fetchredirect",function(queueItem){		
+crawler.on("fetchredirect",function(queueItem){
 	writer_all.write([queueItem.url, '200', queueItem.status,'redirected', queueItem.stateData.requestLatency, queueItem.stateData.requestTime, queueItem.stateData.contentType,queueItem.referrer])
     print_line("Completed fetching redirect:", queueItem.url);
 });
 
 // SUCCESS
-crawler.on("fetchcomplete",function(queueItem){		
+crawler.on("fetchcomplete",function(queueItem){
 	writer_all.write([queueItem.url, '200', queueItem.status,'', queueItem.stateData.requestLatency, queueItem.stateData.requestTime, queueItem.stateData.contentType,queueItem.referrer])
     print_line("Completed fetching resource:", queueItem.url);
 });
@@ -99,7 +100,7 @@ crawler.on("fetcherror", function(queueItem, response){
 });
 
 // END
-crawler.on("complete", function(){	
+crawler.on("complete", function(){
 	writer_all.end();
     print_line("Done");
 });
